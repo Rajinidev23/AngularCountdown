@@ -1,0 +1,30 @@
+<h1>{{ title }}</h1>
+<div>
+  
+ 
+ <table>
+    <tr>
+      <th align="left">Items</th>
+      <th align="left">Count</th>
+    </tr>
+     
+    <tr *ngFor="let item of data.MyItemList">
+      <td>{{item.ItemName}}</td>
+      <td>{{item.ItemCount}}</td>
+    </tr>
+    <tr><br></tr>
+    <tr>
+      <tr><td><label id="lblStartTime"  *ngIf="lblVisible" class="mylabel">Timer started at:      {{ starttime  | date :'mediumTime' }}</label></td></tr>
+      <tr>
+        <td>Countdown Timer: </td>      
+        <td>
+          <countdown #countdown [config]="countdownConfig" (event)="onCountdownEvent($event)" style="font-size: 25px; font-weight: bold; color: red;"></countdown>
+        </td>
+      </tr>
+      <tr>
+        <button type="button" (click)="countdown.resume(); onClick()" *ngIf="btnVisible">Start Timer</button>
+    </tr>
+    <tr><td><label id="lblEndTime" class="mylabel">{{endtimer}}</label></td></tr>
+  </table>
+ 
+</div>
